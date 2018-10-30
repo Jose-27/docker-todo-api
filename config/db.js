@@ -12,12 +12,8 @@ const uristring = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || "mongod
 * operations and release them when the connection is complete.
 */
 
-mongoose.connect(uristring, { useNewUrlParser: true }, function (err, res) {
-    if (err) {
-    console.log ('ERROR connecting to: ' + uristring + '. ' + err);
-    } else {
-    console.log ('Succeeded connected to: ' + uristring);
-    }
-});
+mongoose.connect(uristring, { useNewUrlParser: true })
+    .then(()=> console.log ('Succeeded connected to: ' + uristring))
+    .catch((err) => console.log(err));
 
 module.exports = mongoose;
