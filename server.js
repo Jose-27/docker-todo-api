@@ -5,6 +5,7 @@ const express    = require('express');
 const app        = express();
 const bodyParser = require('body-parser');
 const morgan     = require('morgan');
+const cors       = require('cors')
 
 // =======================
 // configuration =========
@@ -12,6 +13,7 @@ const morgan     = require('morgan');
 const env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 const port = process.env.PORT || 3003;
 
+app.use(cors())
 //parse application/json and look for raw text                                        
 app.use(bodyParser.json());                                     
 app.use(bodyParser.urlencoded({extended: true}));               

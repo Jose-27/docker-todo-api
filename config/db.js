@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 * localhost if we don't find one.
 */
 
-const uristring = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || "mongodb://localhost:27017/todoDB";
+const uristring = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || "mongodb://mongo:27017/todoDB";
 
 /*
 * Makes connection asynchronously.  Mongoose will queue up database

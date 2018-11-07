@@ -7,21 +7,23 @@ const Schema = db.Schema;
 let taskSchema = new Schema({
     title: {
         type: String,
-        require: true,
+        required: true,
     },
     description: {
         type: String,
-        require: true,
+        required: true,
     },
     due_date: {
         type: String,
-        require: true,
+        required: true,
     },
     task_completed: {
-        type: Boolean
+        type: Boolean,
+        default: false
     },
     task_notCompleted: {
-        type: Boolean
+        type: Boolean,
+        default: false
     },
 
 

@@ -7,7 +7,7 @@ module.exports = {
     * /GET get all task
     */
 
-    getAllTasks: async (req, res, next)=>{
+    getAllTasks: async (req, res, next) => {
         try{
             const tasks = await Task.find({});
             res.status(200).json(tasks);
@@ -20,9 +20,15 @@ module.exports = {
     * /POST create a new task
     */
 
-    newTask: async (req, res, next)=>{
+    newTask: async (req, res, next) => {
         try{
-            let newTask = new Task(req.body);
+            let newTask = new Task({
+                title: req.body.title,
+                description: req.body.description,
+                due_date: req.body.date,
+                task_completed: req.body.isCompleted,
+                task_notCompleted: req.body.isNotCompleted
+            });
             const task = await newTask.save();
             
             res.status(201).json(task);
@@ -35,7 +41,7 @@ module.exports = {
     * /DELETE delete a task with a specific ID
     */
 
-    deleteTask: async (req, res, next)=>{
+    deleteTask: async (req, res, next) => {
         try {
             const task = await Task.deleteOne({_id : req.params.id});
             res.status(201).json({ message: "Task successfully deleted!", task });
